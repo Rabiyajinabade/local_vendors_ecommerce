@@ -1,0 +1,19 @@
+# Ignore Python environment
+env/
+__pycache__/
+*.pyc
+
+# Ignore SQLite database
+*.sqlite3
+db.sqlite3
+
+# Ignore IDE/editor files
+.vscode/
+.idea/
+
+# Others
+*.log
+*.bak
+*.tmp
+*.swp
+.DS_Store
