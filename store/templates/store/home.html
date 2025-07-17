@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to Local Vendors E-Commerce</title>
+</head>
+<body>
+    <h1>Welcome to Local Vendors E-Commerce</h1>
+
+    {% for product in products %}
+        <h2>
+            <a href="{% url 'product_detail' product.id %}">{{ product.name }}</a>
+        </h2>
+        <p>{{ product.description }}</p>
+        <p><strong>Price:</strong> ₹{{ product.price }}</p>
+        <p>
+            <strong>Vendor:</strong>
+            <a href="{% url 'vendor_detail' product.vendor.id %}">{{ product.vendor.shop_name }}</a>
+        </p>
+        <hr>
+    {% endfor %}
+</body>
+</html>

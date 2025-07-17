@@ -1,0 +1,24 @@
+<!-- vendor_detail.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ vendor.shop_name }}</title>
+</head>
+<body>
+
+<p><a href="{% url 'home' %}">🏠 Home</a></p>
+
+<h1>{{ vendor.shop_name }}</h1>
+<p>{{ vendor.description }}</p>
+
+<h2>Products by {{ vendor.shop_name }}</h2>
+<ul>
+  {% for product in products %}
+    <li>
+      <a href="{% url 'product_detail' product.id %}">{{ product.name }}</a> - ₹{{ product.price }}
+    </li>
+  {% endfor %}
+</ul>
+
+</body>
+</html>
