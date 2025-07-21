@@ -8,3 +8,4 @@ class VendorAdmin(admin.ModelAdmin):
 admin.site.register(Vendor, VendorAdmin)
 admin.site.register(Product)
 admin.site.register(Order)
+

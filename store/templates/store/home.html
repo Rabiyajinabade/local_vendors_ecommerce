@@ -6,6 +6,9 @@
 <body>
     <h1>Welcome to Local Vendors E-Commerce</h1>
 
+    <!-- 🔗 Link to view cart -->
+    <p><a href="{% url 'view_cart' %}">🛒 View Cart</a></p>
+
     {% for product in products %}
         <h2>
             <a href="{% url 'product_detail' product.id %}">{{ product.name }}</a>
@@ -16,6 +19,13 @@
             <strong>Vendor:</strong>
             <a href="{% url 'vendor_detail' product.vendor.id %}">{{ product.vendor.shop_name }}</a>
         </p>
+
+        <!-- ✅ Add to Cart form -->
+        <form action="{% url 'add_to_cart' product.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit">🛒 Add to Cart</button>
+        </form>
+
         <hr>
     {% endfor %}
 </body>
