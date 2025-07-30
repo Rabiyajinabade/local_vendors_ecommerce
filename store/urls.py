@@ -11,5 +11,16 @@ urlpatterns = [
     path('remove_from_cart/<int:product_id>/', views.remove_from_cart, name='remove_from_cart'),
     path('checkout/', views.checkout, name='checkout'),
     path('cart/', views.view_cart, name='view_cart'),  # ✅ THIS MUST EXIST
+
+    path('report/', views.sales_report, name='sales_report')
+    
+    
+    
+    
+    
+    
+    
+
+    
 ]
 

@@ -1,0 +1,32 @@
+<!-- store/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Local Vendor Store{% endblock %}</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        a { text-decoration: none; color: #337ab7; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>🛍️ Local Vendors E-Commerce</h1>
+    <nav>
+        <a href="{% url 'home' %}">🏠 Home</a> |
+        <a href="{% url 'view_cart' %}">🛒 Cart</a>
+        <a href="{% url 'sales_report' %}" class="btn btn-info">📊 View Report</a>
+
+        
+    </nav>
+    <hr>
+</header>
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+</body>
+</html>

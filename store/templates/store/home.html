@@ -1,32 +1,44 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Welcome to Local Vendors E-Commerce</title>
-</head>
-<body>
-    <h1>Welcome to Local Vendors E-Commerce</h1>
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Welcome to Local Vendors E-Commerce</h1>
 
     <!-- 🔗 Link to view cart -->
-    <p><a href="{% url 'view_cart' %}">🛒 View Cart</a></p>
+    <p><a href="{% url 'view_cart' %}" class="btn btn-warning">🛒 View Cart</a></p>
 
-    {% for product in products %}
-        <h2>
-            <a href="{% url 'product_detail' product.id %}">{{ product.name }}</a>
-        </h2>
-        <p>{{ product.description }}</p>
-        <p><strong>Price:</strong> ₹{{ product.price }}</p>
-        <p>
-            <strong>Vendor:</strong>
-            <a href="{% url 'vendor_detail' product.vendor.id %}">{{ product.vendor.shop_name }}</a>
-        </p>
+    <div class="row">
+        {% for product in products %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                {% if product.image %}
+                    <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                {% else %}
+                    <img src="{% static 'default.jpg' %}" class="card-img-top" alt="Default Image">
+                {% endif %}
 
-        <!-- ✅ Add to Cart form -->
-        <form action="{% url 'add_to_cart' product.id %}" method="post">
-            {% csrf_token %}
-            <button type="submit">🛒 Add to Cart</button>
-        </form>
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a href="{% url 'product_detail' product.id %}">{{ product.name }}</a>
+                    </h5>
+                    <p class="card-text">{{ product.description|truncatewords:15 }}</p>
+                    <p><strong>Price:</strong> ₹{{ product.price }}</p>
+                    <p>
+                        <strong>Vendor:</strong>
+                        <a href="{% url 'vendor_detail' product.vendor.id %}">
+                            {{ product.vendor.shop_name }}
+                        </a>
+                    </p>
 
-        <hr>
-    {% endfor %}
-</body>
-</html>
+                    <form action="{% url 'add_to_cart' product.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-success btn-sm">🛒 Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

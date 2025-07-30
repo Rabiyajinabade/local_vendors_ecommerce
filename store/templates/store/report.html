@@ -1,0 +1,18 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2>📊 Sales Report</h2>
+
+    <p><strong>Total Orders:</strong> {{ total_orders }}</p>
+    <p><strong>Total Revenue:</strong> ₹{{ total_revenue }}</p>
+
+    <h4 class="mt-4">🔥 Top 5 Best-Selling Products</h4>
+    <ul>
+        {% for product in top_products %}
+            <li>{{ product.product__name }} — Sold: {{ product.quantity_sold }}</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'home' %}" class="btn btn-primary mt-3">🏠 Back to Home</a>
+</div>
+{% endblock %}
